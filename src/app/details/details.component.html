@@ -1,0 +1,52 @@
+<app-root></app-root>
+<div class="bg darken-bg " [style.backgroundImage]="'url('+getImageUrl(movieDetails.backdrop_path)+')'" alt="..." *ngIf="!load;else loading">
+    <div class=" film pt-4 no-gutters d-flex justify-content-center">
+        <div>
+            <img [src]="getImageUrl(movieDetails.poster_path)" class="rounded" alt="...">
+        </div>
+        <div class="bod">
+            <div class="card-body p-3">
+                <h5 class="card-title p-1">{{movieDetails.original_title}} . ({{movieDetails.release_date|date:'yyyy'}})
+                </h5>
+
+                <div class="card-body p-2">
+                    <div class="release">
+                        <div *ngIf="movieDetails.adult;else everyone">
+                            <span class="surround">18+</span>
+
+                        </div>
+                        <ng-template #everyone>
+                            <span class="surround">12A</span>
+                        </ng-template>
+                        {{movieDetails.release_date|date:'yyyy/MM/dd'}} .
+                        <span class="genres" *ngFor="let genre of movieDetails.genres">
+                            {{genre.name}},
+                        </span>
+                        <b>{{movieDetails.runtime | timeFormat}}</b>
+                    </div>
+                    <div class="container">
+
+                    </div>
+                    <div class="pt-3">
+                        <h4><b>Overview</b></h4>
+                    </div>
+                    <div class="overview p-2">
+                        {{movieDetails.overview}}
+                    </div>
+
+                </div>
+                <div class="p-4">
+                    <span class="btn btn-primary" (click)="playVideo()">watch movie</span>
+                </div>
+                <div *ngIf="play">
+                    <youtube-player [videoId]="videos[0].key" [width]="360" [height]="450"></youtube-player>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<ng-template #loading>
+    <app-loader></app-loader>
+</ng-template>

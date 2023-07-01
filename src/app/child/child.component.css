@@ -1,0 +1,86 @@
+.fomediv{
+    justify-content: center;
+    align-items: center;
+    margin-left: 37%;
+  
+}
+a{
+    text-decoration: none;
+    text-transform: none;
+    color:rgba(black, black, black, 0.1)
+}
+.maincard{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-self: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.card{
+
+        flex: 0 0 220px; /* Set the width of each container */
+        height: 300px; /* Set the height of each container */
+        background-color: white;
+        margin: 9px;
+        border: none;
+        
+}
+img{
+    height: 350px;
+    border-radius: 12px 12px;
+    box-shadow: 5px solid black;
+}
+.yellow-star {
+    color: yellow;
+  }
+.searchBar{
+    padding: 5% 10%;
+}
+.rating-circle {
+    display: block;
+  }
+  
+  .rating-circle-bg {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 6;
+  }
+  
+  .rating-circle-fill {
+    fill: none;
+    stroke: #f8c74f;
+    stroke-width: 6;
+    stroke-dasharray: 0;
+    transition: stroke-dasharray 0.5s;
+  }
+  
+  .rating-text {
+    font-size: 24px;
+    font-weight: bold;
+    fill: #000;
+    padding: 10%;
+
+  }
+  .card-body .img{
+    width: 25px;
+    height: 25px;
+    padding: 10%;
+  }
+  .card-body{
+    align-items: center;
+  }
+  .card-title{
+    font-size: 16px;
+  }
+
+  .releaserating{
+    justify-content: space-between;
+  }
+  .paginator{
+    margin: auto;
+    justify-content: center;
+  }
+  .example{
+    background: black;
+  }

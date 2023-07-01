@@ -1,0 +1,56 @@
+<div class="container-fill whole-page" *ngIf="!load;else loading">
+  <div class="container-fill bg-dark">
+    <div class="container mt-5 bg-dark center">
+
+      <div class="input-group searchBar">
+        <input type="search" class="form-control" placeholder="Search a movie,actor,.." aria-label="Search"
+          [(ngModel)]="searchResults">
+        <button class="btn btn-primary" (click)="searchMovies(searchResults)" type="button">Search</button>
+      </div>
+
+      <div class="text-dark maincard row" bg-dark>
+
+        <div *ngFor="let movie of movies" class="container p-3 col-sm-3 " id="carding">
+          <a [routerLink]="['/details',movie.id]">
+            <img [src]="getImageUrl(movie.poster_path)" class="card-img-top" alt="Movie Poster">
+            <div class="card-body p-2">
+              <span class="card-title text-light"><b>{{ movie.title }}</b></span><br>
+              <div class="d-flex releaserating mt-1">
+                <div>
+                  <span class=" text-secondary">{{ movie.release_date|date}}</span>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <br><img src="assets/star.png" class="img" />
+                  <span class="card-title pl-2 text-secondary d-end">{{ movie.vote_average }}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="pb-4 pt-4">
+      Load more movies
+    </div>
+  </div>
+  <div class="container-fill bg-dark text-white pb-2 pt-3">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" >
+          <li class="page-item"  [ngClass]="{ 'disabled': disabling }" *ngIf="!disabling">
+            <a class="page-link"  tabindex="-1" (click)="prev()" style="cursor: pointer;">Previous</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">{{f}}</a></li>
+          <li class="page-item"><a class="page-link" href="#">...</a></li>
+          <li class="page-item"><a class="page-link" href="#">{{total_pages}}</a></li>
+          <li class="page-item"  (click)="next()">
+            <a class="page-link"  style="cursor: pointer;">Next</a>
+          </li>
+        </ul>x
+      </nav>
+  </div>
+  <div class="container-fill bg-dark center pb-4 pt-4">
+  </div>
+</div>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
